@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2>Individual Product</h2>
+  <h1>Individual Product Information</h1>
     <div id="products">
       <h3><%= @product.name %></h3>
       <h4>Price: <%= @product.price %></h4>
@@ -8,6 +8,8 @@
       <br>
       <h4><%= @product.description %></h4>
       <br>
+      <h3><%= link_to "Edit", "/products/#{@product.id}/edit" %></h3>
+      <h3><%= link_to "Delete", "/products/#{@product.id}", method: :delete %></h3>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Click to see more</a></p>
       <br>
     </div>
