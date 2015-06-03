@@ -1,18 +1,18 @@
+<div class="container">
+  <h1>Individual Product Info</h1>
+  <div id="products">
+    <h3><%= @product.name %></h3>
+    <h4>Price: <%= @product.price %></h4>
+    <br>
+    <img src=<%= @product.image %>>
+    <br>
+    <h4><%= @product.description %></h4>
+    <br>
+  </div>
 
-  <h1>Individual Product Information</h1>
-    <div id="products">
-      <h3><%= @product.name %></h3>
-      <h4>Price: <%= @product.price %></h4>
-      <br>
-      <img src=<%= @product.image %>>
-      <br>
-      <h4><%= @product.description %></h4>
-      <br>
-      <h3><%= link_to "Edit", "/products/#{@product.id}/edit" %></h3>
-      <h3><%= link_to "Delete", "/products/#{@product.id}", method: :delete %></h3>
-      <h4><%= link_to "Back to All Products", "/products" %>
-      <hr>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Click to see more</a></p>
-      <br>
-    </div>
+  <div>
+    <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit</a>
+    <a rel="nofollow" data-method="delete" href="/products/<%= @product.id %>", class="btn btn-info" role="button">Delete</a>
+  </div>
+</div>    
 

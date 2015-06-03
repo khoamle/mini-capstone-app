@@ -1,0 +1,29 @@
+body {
+  font-family: Rockwell,"Courier Bold",Courier,Georgia,Times,"Times New Roman",serif;
+  background-image: url("wood_pattern.png");
+}
+
+.header-row{
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.products {
+  width: 300px;
+  height: 450px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  float: left;
+}
+.btn-info{
+  margin-right: 20px;
+}
