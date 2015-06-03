@@ -1,18 +1,19 @@
 <div class="jumbotron">
   <h1>All Products for Sale!</h1>
-    <h3><%= link_to "Add New Product", "/products/new" %></h3>
-    <% @products.each do |product| %>
-      <div class="products">
-        <%= link_to product.name, "/products/#{product.id}" %>
-        <h4>Price: <%= product.price %></h4>
-        <br>
-        <img src=<%= product.image %>>
-        <br>
-        <h4><%= product.description %></h4>
-        <br>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Click to see more</a></p>
-        <br>
-      </div>
-    <% end %>
+  <h3><%= link_to "Add New Product", "/products/new" %></h3>
+  <% @products.each do |product| %>
+    <div class="products">
+      <h3><%= link_to product.name, "/products/#{product.id}" %></h3>
+      <h4>Price: <%= product.price %></h4>
+      <br>
+      <img src=<%= product.image %>>
+      <br>
+      <h4><%= product.description %></h4>
+      <br>
+      <p><a class="btn btn-primary btn-lg" href="/products/<%= product.id %>" role="button">Click to see more</a></p>
+      <br>
+    </div>
+  <% end %>
 </div>
+
 
