@@ -2,21 +2,18 @@
   <div class="header-row">
     <h1>All Products for Sale!</h1>
   </div>
+  <div class="row">
     <% @products.each do |product| %>
-    <ul>
-      <li class="products">
+      <div class="col-md-4">
         <h3><%= link_to product.name, "/products/#{product.id}" %></h3>
         <h4>Price: <%= product.price %></h4>
-        <br>
-        <img src=<%= product.image %>>
-        <br>
+        <%= image_tag product.image, width: 250, height: 250%>
         <h4><%= product.description %></h4>
-        <br>
         <p><a class="btn btn-primary btn-lg" href="/products/<%= product.id %>" role="button">Click for more info</a></p>
-        <br>
-      </li>
-    </ul>
+        <br><br>
+      </div>
     <% end %>
+  </div>
 </div>
 
 <div class="navbar navbar-inverse navbar-fixed-bottom">
