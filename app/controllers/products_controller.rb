@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find_by(id: params[:id])
     @product.destroy
-    flash[:warning] = "Product deleted!"
+    flash[:warning] = "Product successfully deleted!"
     redirect_to "/products"
   end
 end

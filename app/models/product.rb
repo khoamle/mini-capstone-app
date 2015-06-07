@@ -11,20 +11,18 @@ class Product < ActiveRecord::Base
     result += "#{hours} hours"
     "#{hours} hours, #{minutes}, minutes"
   end
-
   def sale_message
-    if price.delete("$").to_i < 5
+    if price < 5
       "Discount Item!"
     else
       "On Sale!"
     end 
   end
-
   def tax
-    price.delete("$").to_i * SALES_TAX
+    price * SALES_TAX
   end
 
   def total
-    price.delete("$").to_i + tax
+    price + tax
   end
 end
