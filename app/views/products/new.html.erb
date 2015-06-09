@@ -1,22 +1,32 @@
 <div class="container">
   <%= form_tag '/products', method: :post do %>
     <div>
-      <%= label_tag :name %>
-      <%= text_field_tag :name %>
+      <h4>
+        <%= label_tag :name %>
+        <%= text_field_tag :name %>
+      </h4>
     </div>
     <div>
-      <%= label_tag :price %>
-      <%= text_field_tag :price %>
+      <h4>
+        <%= label_tag :price , "Price $" %>
+        <%= text_field_tag :price %>
+      </h4>
     <div>
-      <%= label_tag :image, "Image URL" %>
-      <%= text_field_tag :image %>  
+      <h4>
+        <%= label_tag :image, "Image URL" %>
+        <%= text_field_tag :image %>  
+      </h4>
     </div>
     <div>
-      <%= label_tag :description %>
-      <%= text_field_tag :description %>  
+      <h4>
+        <%= label_tag :description %>
+        <%= text_field_tag :description %>  
+      </h4>
     </div>
     <div>
-      <%= submit_tag "Add Product" %>
+      <h4>
+        <%= submit_tag "Add Product" %>
+      </h4>
     </div>
   <% end %>
 </div>

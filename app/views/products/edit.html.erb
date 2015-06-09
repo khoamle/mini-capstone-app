@@ -1,22 +1,37 @@
 <div class="container">
   <%= form_tag "/products/#{@product.id}", method: :patch do %>
     <div>
-      <%= label_tag :name %>
-      <%= text_field_tag :name, @product.name %>
+      <h4>
+        <%= label_tag :name %>
+        <%= text_field_tag :name, @product.name %>
+      </h4>
     </div>
     <div>
-      <%= label_tag :price %>
-      <%= text_field_tag :price, @product.price %>
+      <h4>
+        <%= label_tag :price , "Price $" %>
+        <%= text_field_tag :price, @product.price%>
+      </h4>
     <div>
-      <%= label_tag :image, "Image URL"%>
-      <%= text_field_tag :image, @product.image %>  
+      <h4>
+        <%= label_tag :image, "First Image URL" %>
+        <%= text_field_tag :image, @product.product_images.first.image_url%>  
+      </h4>
+      <h4>
+        <%= label_tag :image, "Last Image URL" %>
+        <%= text_field_tag :image, @product.product_images.last.image_url%>  
+      </h4>
     </div>
     <div>
-      <%= label_tag :description %>
-      <%= text_field_tag :description, @product.description %>    
+      <h4>
+        <%= label_tag :description %>
+        <%= text_field_tag :description, @product.description%>  
+      </h4>
     </div>
     <div>
-      <%= submit_tag "Update Product" %>
+      <h4>
+        <%= submit_tag "Add Product" %>
+      </h4>
     </div>
   <% end %>
 </div>
+

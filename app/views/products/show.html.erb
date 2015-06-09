@@ -1,9 +1,13 @@
 <div class="container">
-  <h1>Individual Product Info</h1>
+  <h1>Single Product Info</h1>
     <h3><%= @product.name %></h3>
     <h4>Updated on: <%= @product.friendly_updated_at %>
     <h4>Price: $<%= @product.price %></h4>
-    <%= image_tag @product.image, width: 250, height: 250%>
+    <h4>Phone Supplier: <%= @product.supplier.name %></h4>
+    <% @product.product_images.each do |image| %>
+        <%= image_tag image.image_url, width: 250, height: 250 %>
+    <% end %>
+
     <br>
     <h4><%= @product.description %></h4>
     <h3>Sale Message: <%= @product.sale_message %>
