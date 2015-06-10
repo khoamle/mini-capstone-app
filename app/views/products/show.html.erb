@@ -3,9 +3,9 @@
     <h3><%= @product.name %></h3>
     <h4>Updated on: <%= @product.friendly_updated_at %>
     <h4>Price: $<%= @product.price %></h4>
-    <h4>Phone Supplier: <%= @product.supplier.name %></h4>
+    <h4>Phone Supplier: </h4>
     <% @product.product_images.each do |image| %>
-        <%= image_tag image.image_url, width: 250, height: 250 %>
+        <%= image_tag image.image_url, width: 400, height: 400 %>
     <% end %>
 
     <br>

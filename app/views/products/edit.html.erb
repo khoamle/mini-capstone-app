@@ -13,12 +13,13 @@
       </h4>
     <div>
       <h4>
-        <%= label_tag :image, "First Image URL" %>
-        <%= text_field_tag :image, @product.product_images.first.image_url%>  
+        <%= label_tag :image_1 %>
+        <%= text_field_tag :image_1 %>  
       </h4>
+    </div>
       <h4>
-        <%= label_tag :image, "Last Image URL" %>
-        <%= text_field_tag :image, @product.product_images.last.image_url%>  
+        <%= label_tag :image_2 %>
+        <%= text_field_tag :image_2 %>  
       </h4>
     </div>
     <div>
@@ -29,7 +30,7 @@
     </div>
     <div>
       <h4>
-        <%= submit_tag "Add Product" %>
+        <%= submit_tag "Update Product" %>
       </h4>
     </div>
   <% end %>
