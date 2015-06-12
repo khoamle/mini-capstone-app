@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Order Id: <%= @order.id%></h3>
+  <h3>Quantity: <%= @order.quantity %></h3>
+  <h3>Subtotal: <%= number_to_currency(@order.subtotal) %>
+  <h3>Tax: <%= number_to_currency(@order.tax) %></h3>
+  <h3>Total: <%= number_to_currency(@order.total) %>
+  <div>
+  <br>
+    <a href="/products" class="btn btn-info" role="button">Click here to buy more!</a>
+  </div>
+</div>
+

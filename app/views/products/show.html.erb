@@ -12,9 +12,26 @@
     <h4><%= @product.description %></h4>
     <h3>Sale Message: <%= @product.sale_message %>
     <h5>Tax: <%= number_to_currency(@product.tax) %>
-    <h5>Total Price: <%= number_to_currency(@product.total) %>
-    <br>
-    <br>
+    <h5>Total Price: <%= number_to_currency(@product.total) %> 
+
+    <section>
+      <%= form_tag '/orders', method: :post do  %>
+          <div>
+            <h4>
+              <%= label_tag :quantity %>
+              <%= text_field_tag :quantity %>
+            </h4>
+          </div>
+          <%= label_tag :product_id, "Product Id" %>
+          <%= text_field_tag :product_id, @product.id %>
+          <div>
+            <h4>
+              <%= submit_tag "Buy Now!" %>
+            </h4>
+          </div>
+      <% end %>
+    </section>
+
 
   <div>
     <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit</a>
