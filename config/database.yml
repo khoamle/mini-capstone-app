@@ -48,8 +48,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
   database: mini-capstone-app_production
-  username: mini-capstone-app
-  password: <%= ENV['MINI-CAPSTONE-APP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: uincode
+  pool: 5
 
