@@ -7,7 +7,8 @@
       <div class="col-md-4">
         <h3><%= link_to product.name, "/products/#{product.id}" %></h3>
         <h4>Price: $<%= product.price %></h4>
-        <%= image_tag product.product_images.first.image_url, width: 250, height: 250 %>
+        <%# image_tag product.product_images.first.image_url, width: 250, height: 250 %>
+        <%= image_tag product.product_images, width: 250, height: 250 %>
         <h4><%= product.description %></h4>
         <p><a class="btn btn-primary btn-lg" href="/products/<%= product.id %>" role="button">Click for more info</a></p>
         <br><br>
