@@ -50,6 +50,6 @@ test:
 production:
   database: mini-capstone-app_production
   adapter: postgresql
-  encoding: uincode
+  encoding: unicode
   pool: 5
 
