@@ -13,9 +13,14 @@
     <h3>Sale Message: <%= @product.sale_message %>
     <h5>Tax: <%= number_to_currency(@product.tax) %>
     <h5>Total Price: <%= number_to_currency(@product.total) %> 
+    <h5> Category :
+      <% @product.categories.each do |category| %>
+        <%= category.name %>
+      <% end %>
+    </h5>
 
     <section>
-      <%= form_tag '/orders', method: :post do  %>
+      <%= form_tag '/carted_products', method: :post do  %>
           <div>
             <h4>
               <%= label_tag :quantity %>
@@ -26,7 +31,7 @@
           <%= text_field_tag :product_id, @product.id %>
           <div>
             <h4>
-              <%= submit_tag "Buy Now!" %>
+              <%= submit_tag "Add to Cart!" %>
             </h4>
           </div>
       <% end %>

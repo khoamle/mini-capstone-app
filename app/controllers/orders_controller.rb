@@ -1,20 +1,25 @@
 class OrdersController < ApplicationController
+  SALES_TAX = 0.09
 
   def create
-    if current_user
-      quantity = params[:quantity].to_i
-      price = Product.find_by(id: params[:product_id]).price
+    @carted_products = current_user.carted_products.where(status: "carted")
 
-      @order = Order.new(quantity: params[:quantity], product_id: @product_id, user_id: current_user.id)
-      @order.subtotal = @order.calculate_subtotal(price)
-      @order.tax = @order.calculate_tax(price)
-      @order.total = @order.calculate_total(price)
-
-      @order.save
-      redirect_to "/orders/#{@order.id}"
-    else
-      redirect_to "/users/sign_in"
+    subtotal = 0
+    @carted_products.each do |carted_product|
+      subtotal += carted_product.quantity * carted_product.product.price
     end
+
+    tax = subtotal * SALES_TAX
+    total = subtotal + tax
+
+    order = Order.create(user_id: current_user.id, subtotal: subtotal, tax: tax, total: total)
+
+    # @carted_products.each do |carted_product|
+    #   carted_product.update(status: "purchased", order_id: order.id)
+    # end
+    @carted_products.update_all(status: "purchased", order_id: order_id)
+
+    redirect_to "/orders/#{order.id}"
   end
 
   def show

@@ -1,0 +1,32 @@
+<h1>Checkout Page</h1>
+
+<% @carted_products.each do |carted_product| %>
+  <h2><%= carted_product.product.name %></h2>
+  <h3>Quantity: <%= carted_product.quantity %></h3>
+<% end %>
+
+<% form_tag "/orders", method: :post do %>
+  <%= submit_tag "Buy Now!" %>
+<% end %>
+
+
+<div class="container">
+  <div class="row">
+  <% @carted_products.each do |carted_product| %>
+    <div class="col-md-4">
+      <h4>ID: <%= carted_product.id %></h4>
+      <h4>UserID : <%= carted_product.user_id %></h4>
+      <h4>ProductID: <%= carted_product.product_id %></h4>
+      <h4>Quantity: <%= carted_product.quantity %></h4>
+      <h4>OrderID: <%= carted_product.order_id %></h4>
+      <h4>Status: <%= carted_product.status %></h4>
+      <h4>User email: <%= carted_product.user.email %></h4>
+      <div>
+        <h4><%= link_to "Remove", "/carted_products/#{carted_product.id}", method: :delete %></h4>
+      </div>
+    </div>
+  <% end %>
+</div>
+  <div>
+      <%= link_to "Buy Now!", "/orders", method: :post %>
+  </div>
