@@ -75,6 +75,7 @@ Order.create!([
   {user_id: 1, tax: "0.18", subtotal: "2.0", total: "2.18"}
 ])
 Product.create!([
+  {name: "delete_me", price: "1.0", description: "1st generation iPhone", stock: nil, supplier_id: 3},
   {name: "iPhone", price: "1.0", description: "1st generation iPhone", stock: nil, supplier_id: 3},
   {name: "iPhone 3g", price: "2.0", description: "2nd generation iPhone", stock: nil, supplier_id: 2},
   {name: "iPhone 3gs", price: "35.87", description: "3rd generation iPhone", stock: nil, supplier_id: 1},
