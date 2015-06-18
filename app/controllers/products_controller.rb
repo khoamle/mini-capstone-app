@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+
   def index
     @products = Product.all
     if params[:sort] && params[:sort_order]
@@ -43,6 +45,7 @@ class ProductsController < ApplicationController
     ProductImage.update(product_id: @product.id, image_url: params[:image_2])
     flash[:success] = "Product successfully updated!"
     redirect_to "/products/#{@product.id}"
+
   end
 
   def destroy
@@ -56,4 +59,5 @@ class ProductsController < ApplicationController
     @products = Product.where("name LIKE ? or price LIKE ? or image LIKE ? or description LIKE ?", "%#{search_term}%", "%#{search_term}%", "%#{search_term}%", "%#{search_term}%")
     render :index
   end
+
 end

@@ -25,7 +25,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/products">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="/products/new">Add New Product</a></li>
+        <% if user_signed_in? && current_user.admin %>
+          <li><a href="/products/new">Add New Product</a></li>
+        <% end %>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More Features <span class="caret"></span></a>
@@ -61,6 +63,7 @@
         <li><%= link_to "Sign Up", "/users/sign_up" unless current_user %></li>
         <li><%= link_to "Sign Out", "/users/sign_out", method: :delete if current_user %>
         </li>
+        <li><span class="glyphicon glyphicon-shopping-cart"></span><%= link_to "Shopping Cart (#{@cart_count})", "/carted_products" %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

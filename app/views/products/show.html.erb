@@ -37,10 +37,11 @@
       <% end %>
     </section>
 
-
   <div>
-    <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit</a>
-    <a rel="nofollow" data-method="delete" href="/products/<%= @product.id %>", class="btn btn-info" role="button">Delete</a>
+    <% if user_signed_in? && current_user.admin %>
+      <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit</a>
+      <a rel="nofollow" data-method="delete" href="/products/<%= @product.id %>", class="btn btn-info" role="button">Delete</a>
+    <% end %>
   </div>
 </div>    
 
