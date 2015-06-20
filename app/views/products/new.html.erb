@@ -1,38 +1,48 @@
-<div class="container">
-  <%= form_tag '/products', method: :post do %>
-    <div>
-      <h4>
-        <%= label_tag :name %>
-        <%= text_field_tag :name %>
-      </h4>
-    </div>
-    <div>
-      <h4>
-        <%= label_tag :price , "Price $" %>
-        <%= text_field_tag :price %>
-      </h4>
-    <div>
-      <h4>
-        <%= label_tag :image_1 %>
-        <%= text_field_tag :image_1 %>  
-      </h4>
-    </div>
-    <div>
-      <h4>
-        <%= label_tag :image_2 %>
-        <%= text_field_tag :image_2 %>  
-      </h4>
-    </div>
-    <div>
-      <h4>
-        <%= label_tag :description %>
-        <%= text_field_tag :description %>  
-      </h4>
-    </div>
-    <div>
-      <h4>
-        <%= submit_tag "Add Product" %>
-      </h4>
-    </div>
-  <% end %>
-</div>
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being created:</h2>
+ 
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_tag '/products', method: :post do %>
+  <div>
+    <h4>
+      <%= label_tag :name %>
+      <%= text_field_tag :name, @product.name %>
+    </h4>
+  </div>
+  <div>
+    <h4>
+      <%= label_tag :price , "Price $" %>
+      <%= text_field_tag :price, @product.price%>
+    </h4>
+  <div>
+    <h4>
+      <%= label_tag :image_1 %>
+      <%= text_field_tag :image_1 %>  
+    </h4>
+  </div>
+  <div>
+    <h4>
+      <%= label_tag :image_2 %>
+      <%= text_field_tag :image_2 %>  
+    </h4>
+  </div>
+  <div>
+    <h4>
+      <%= label_tag :description %>
+      <%= text_field_tag :description, @product.description%>  
+    </h4>
+  </div>
+  <div>
+    <h4>
+      <%= submit_tag "Add Product" %>
+    </h4>
+  </div>
+<% end %>

@@ -1,47 +1,59 @@
-<div class="container">
-  <h1>Single Product Info</h1>
-    <h3><%= @product.name %></h3>
-    <h4>Updated on: <%= @product.friendly_updated_at %>
-    <h4>Price: $<%= @product.price %></h4>
-    <h4>Phone Supplier: </h4>
-    <% @product.product_images.each do |image| %>
-        <%= image_tag image.image_url, width: 400, height: 400 %>
+<% if @carted_products && @carted_products.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@carted_products.errors.count, "error") %> prohibited this product from being added to the cart:</h2>
+ 
+    <ul>
+    <% @carted_products.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
     <% end %>
-
-    <br>
-    <h4><%= @product.description %></h4>
-    <h3>Sale Message: <%= @product.sale_message %>
-    <h5>Tax: <%= number_to_currency(@product.tax) %>
-    <h5>Total Price: <%= number_to_currency(@product.total) %> 
-    <h5> Category :
-      <% @product.categories.each do |category| %>
-        <%= category.name %>
-      <% end %>
-    </h5>
-
-    <section>
-      <%= form_tag '/carted_products', method: :post do  %>
-          <div>
-            <h4>
-              <%= label_tag :quantity %>
-              <%= text_field_tag :quantity %>
-            </h4>
-          </div>
-          <%= label_tag :product_id, "Product Id" %>
-          <%= text_field_tag :product_id, @product.id %>
-          <div>
-            <h4>
-              <%= submit_tag "Add to Cart!" %>
-            </h4>
-          </div>
-      <% end %>
-    </section>
-
-  <div>
-    <% if user_signed_in? && current_user.admin %>
-      <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit</a>
-      <a rel="nofollow" data-method="delete" href="/products/<%= @product.id %>", class="btn btn-info" role="button">Delete</a>
-    <% end %>
+    </ul>
   </div>
-</div>    
+<% end %>
+
+
+<h1>Single Product Info</h1>
+<h3><%= @product.name %></h3>
+<h4>Updated on: <%= @product.friendly_updated_at %>
+<h4>Price: $<%= @product.price %></h4>
+<h4>Phone Supplier: </h4>
+<% @product.product_images.each do |image| %>
+    <%= image_tag image.image_url, width: 400, height: 400 %>
+<% end %>
+
+<br>
+<h4><%= @product.description %></h4>
+<h3>Sale Message: <%= @product.sale_message %>
+<h5>Tax: <%= number_to_currency(@product.tax) %>
+<h5>Total Price: <%= number_to_currency(@product.total) %> 
+<h5> Category :
+  <% @product.categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
+</h5>
+
+<section>
+  <%= form_tag '/carted_products', method: :post do  %>
+      <div>
+        <h4>
+          <%= label_tag :quantity %>
+          <%= text_field_tag :quantity %>
+        </h4>
+      </div>
+      <%= label_tag :product_id, "Product Id" %>
+      <%= text_field_tag :product_id, @product.id %>
+      <div>
+        <h4>
+          <%= submit_tag "Add to Cart!" %>
+        </h4>
+      </div>
+  <% end %>
+</section>
+
+<div>
+  <% if user_signed_in? && current_user.admin %>
+    <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit</a>
+    <a rel="nofollow" data-method="delete" href="/products/<%= @product.id %>", class="btn btn-info" role="button">Delete</a>
+  <% end %>
+</div>
+ 
 

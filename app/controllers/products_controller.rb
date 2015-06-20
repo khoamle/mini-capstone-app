@@ -24,14 +24,19 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
   end
 
   def create
-    @product = Product.create(name: params[:name], price: params[:price],description: params[:description])
+    @product = Product.new(name: params[:name], price: params[:price],description: params[:description])
     ProductImage.create(product_id: @product.id, image_url: params[:image_1])
     ProductImage.create(product_id: @product.id, image_url: params[:image_2])
-    flash[:success] = "Product sucessfully created!"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "Product sucessfully created!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -41,11 +46,15 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find_by(id: params[:id])
     @product.update(name: params[:name], price: params[:price], description: params[:description])
-    ProductImage.update(product_id: @product.id, image_url: params[:image_1])
-    ProductImage.update(product_id: @product.id, image_url: params[:image_2])
-    flash[:success] = "Product successfully updated!"
-    redirect_to "/products/#{@product.id}"
-
+    @product.product_images.delete_all
+    @image_1 = ProductImage.new(product_id: @product.id, image_url: params[:image_1])
+    @image_2 =ProductImage.new(product_id: @product.id, image_url: params[:image_2])
+    if @product.save && @image_1.save && @image_2.save
+      flash[:success] = "Product successfully updated!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :edit
+    end
   end
 
   def destroy

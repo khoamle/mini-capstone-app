@@ -6,6 +6,11 @@ class Product < ActiveRecord::Base
   has_many :categories, through: :categorized_products
   has_many :carted_products
 
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :description, presence: true
+
   SALES_TAX = 0.09
   def friendly_updated_at
     updated_at.strftime("%b %d, %Y")
